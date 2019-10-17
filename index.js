@@ -32,4 +32,4 @@ client.on('message',async msg => {
 
 
 
-client.login('NjM0MzEyMzc1Nzg0MzA4NzY2.Xagruw.7aPUXGxoPXV_fObu3hEPj4tPVcU');
+client.login(prcess.env.TOKEN);
