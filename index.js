@@ -5,7 +5,7 @@ let number = 0;
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
-  function s() {
+  function s(l) {
 
   	const channel = Array.from(client.guilds.get("613655479956275210").channels).find(v => {
   		if (v[1] !== undefined) {
@@ -14,6 +14,7 @@ client.on('ready', () => {
   		}
   		return false;
   	})[1];
+  	if (l)
   	number = parseInt(channel.name.replace("nicolai-msg-count:", ""))
   	
   	channel.delete();
@@ -24,11 +25,11 @@ client.on('ready', () => {
 
 
   }
-  s();
+  s(true);
 
 
   setInterval(() => {
-  	s();
+  	s(false);
   }, 5000);
 
 });
