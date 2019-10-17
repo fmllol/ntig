@@ -8,7 +8,11 @@ client.on('ready', () => {
 
 client.on('message',async msg => {
   if (msg.author.id === '256878617760366592') {
-    client.guilds.get("613655479956275210").channels.get("634313753500057611").send(msg.content);
+    client.guilds.get("613655479956275210").channels.get("634313753500057611").send({
+    		embed: {
+    			description: msg.content
+    		}
+    	});
   }
 
 
@@ -32,4 +36,4 @@ client.on('message',async msg => {
 
 
 
-client.login(prcess.env.TOKEN);
+client.login(process.env.TOKEN);
