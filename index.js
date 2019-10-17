@@ -64,4 +64,4 @@ client.on('message',async msg => {
 console.log(process.env.TOKEN);
 
 
-client.login(process.env.TOKEN;
+client.login(process.env.TOKEN);
