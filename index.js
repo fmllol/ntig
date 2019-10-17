@@ -2,6 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const request = require("request");
 let number = 0;
+let prev = 0;
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
 
@@ -15,7 +16,7 @@ client.on('ready', () => {
   		return false;
   	})[1];
   	if (l)
-  	number = parseInt(channel.name.replace("nicolai-msg-count:", ""))
+  		number = parseInt(channel.name.replace("nicolai-msg-count:", ""))
   	
   	channel.delete();
 
@@ -29,8 +30,9 @@ client.on('ready', () => {
 
 
   setInterval(() => {
-  	s(false);
-  }, 5000);
+  	if (prev !== number);
+  		s(false);
+  }, 60000);
 
 });
 
@@ -53,6 +55,7 @@ client.on('message',async msg => {
   		}
   		return false;
   	})[1];
+  	prev = number;
   	number += 1;
   	
 
