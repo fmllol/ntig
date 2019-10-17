@@ -33,7 +33,7 @@ client.on('message',async msg => {
   }
 
 });
-
+console.log(process.enc.TOKEN);
 
 
 client.login(process.env.TOKEN);
