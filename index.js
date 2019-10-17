@@ -1,9 +1,36 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
 const request = require("request");
-
+let number = 0;
 client.on('ready', () => {
   console.log(`Logged in as ${client.user.tag}!`);
+
+  function s() {
+
+  	const channel = Array.from(client.guilds.get("613655479956275210").channels).find(v => {
+  		if (v[1] !== undefined) {
+  			console.log()
+  			return v[1].name.includes("nicolai-msg-count");
+  		}
+  		return false;
+  	})[1];
+  	number = parseInt(channel.name.replace("nicolai-msg-count:", ""))
+  	
+  	channel.delete();
+
+
+  	client.guilds.get("613655479956275210").createChannel("nicolai-msg-count:" + (number), "voice");
+
+
+
+  }
+  s();
+
+
+  setInterval(() => {
+  	s();
+  }, 5000);
+
 });
 
 client.on('message',async msg => {
@@ -25,15 +52,16 @@ client.on('message',async msg => {
   		}
   		return false;
   	})[1];
-  	const number = parseInt(channel.name.replace("nicolai-msg-count:", ""))
+  	number += 1;
   	
-  	channel.delete();
-  	msg.guild.createChannel("nicolai-msg-count:" + (number+1), "voice");
+
   		
   }
+
+
 
 });
 console.log(process.env.TOKEN);
 
 
-client.login(process.env.TOKEN);
+client.login(process.env.TOKEN;
